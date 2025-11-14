@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   db:
@@ -11,9 +11,18 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
     ports:
-      - '3306:3306'
+      - "3306:3306"
     volumes:
       - mysqldata:/var/lib/mysql
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
 
   app:
     build: ./backend
@@ -21,18 +30,19 @@ services:
     restart: always
     depends_on:
       - db
+      - ollama
     ports:
-      - '3000:3000'
+      - "3000:3000"
+    env_file:
+      - .env
     environment:
       DB_HOST: db
-      DB_PORT: 3306
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_NAME}
+      OLLAMA_URL: http://ollama:11434
       NODE_ENV: development
     volumes:
-    - ./backend:/usr/src/app
+      - ./backend:/usr/src/app
     command: npm run start:dev
 
 volumes:
   mysqldata:
+  ollama_data:

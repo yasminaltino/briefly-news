@@ -8,18 +8,21 @@ import { Summary } from './modules/summaries/summary.entity';
 import { Favorite } from './modules/favorites/favorite.entity';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/users/user.module';
+import { NewsModule } from './modules/news/news.module';
+import { FavoriteModule } from './modules/favorites/favorite.module';
+import { SummaryModule } from './modules/summaries/summary.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
+      envFilePath: '../.env',
     }),
     PassportModule.register({ defaultStrategy: 'google' }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST || 'db',
-      port: 3306,
+      port: parseInt(process.env.DB_PORT || '3306'),
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
@@ -28,6 +31,9 @@ import { UserModule } from './modules/users/user.module';
     }),
     AuthModule,
     UserModule,
+    NewsModule,
+    FavoriteModule,
+    SummaryModule,
   ],
 })
 export class AppModule {}

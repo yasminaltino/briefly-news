@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
   ManyToOne,
+  OneToOne,
 } from 'typeorm';
 import { Favorite } from 'src/modules/favorites/favorite.entity';
 import { Summary } from 'src/modules/summaries/summary.entity';
@@ -18,14 +19,20 @@ export class News {
   @Column()
   title: string;
 
+  @Column()
+  author: string;
+
   @Column({ type: 'text' })
   description: string;
 
-  @Column({ nullable: true })
-  imageUrl: string;
+  @Column({ type: 'text' })
+  content: string;
 
   @Column({ nullable: true })
-  sourceUrl: string;
+  urlToImage: string;
+
+  @Column({ unique: true })
+  url: string;
 
   @Column({ nullable: true })
   publishedAt: string;
