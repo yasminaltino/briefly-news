@@ -16,13 +16,12 @@ export class CreateNewsDto {
   @IsUrl()
   url: string;
 
+  @IsString()
+  source: string;
+
   @IsOptional()
   @IsUrl()
   urlToImage?: string;
-
-  @IsOptional()
-  @IsString()
-  sourceUrl?: string;
 
   @IsOptional()
   @IsString()

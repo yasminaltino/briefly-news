@@ -34,6 +34,9 @@ export class News {
   @Column({ unique: true })
   url: string;
 
+  @Column()
+  source: string;
+
   @Column({ nullable: true })
   publishedAt: string;
 

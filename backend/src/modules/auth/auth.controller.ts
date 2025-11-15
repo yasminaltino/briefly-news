@@ -16,16 +16,13 @@ export class AuthController {
     try {
       const response = await this.authService.login(req.user.id);
 
-      // res.redirect(`http://localhost:3001?token=${response.access_token}`);
-
-      res.json({
-        message: 'Login successful! Copy the token and test /auth/profile',
-        user: response.user,
-        access_token: response.access_token,
-        instructions: 'Use this token in Authorization header: Bearer <token>',
-      });
+      res.redirect(
+        `http://localhost:5173/feed?token=${response.access_token}&user=${encodeURIComponent(JSON.stringify(response.user))}`,
+      );
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.redirect(
+        `http://localhost:5173/?error=${encodeURIComponent(error.message)}`,
+      );
     }
   }
 

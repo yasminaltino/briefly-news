@@ -1,0 +1,53 @@
+.intellux-primary {
+  color: #14145f !important;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.bg-intellux-primary {
+  background-color: #14145f !important;
+}
+
+.card-intellux-bg {
+  background-color: rgba(216, 252, 57, 0.8) !important;
+}
+
+.btn-intellux {
+  background-color: transparent !important;
+  border: 2px solid #14145f !important;
+  color: #14145f !important;
+  border-radius: 50px !important;
+}
+
+.btn-intellux:hover {
+  background-color: #14145f !important;
+  border-color: #14145f !important;
+  color: white !important;
+}
+.btn-google {
+  background-color: white !important;
+  border: 1px solid #dadce0 !important;
+  color: #3c4043 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  border-radius: 4px !important;
+  transition: box-shadow 0.2s ease !important;
+}
+
+.btn-google:hover {
+  background-color: #f8f9fa !important;
+  border-color: #dadce0 !important;
+  color: #3c4043 !important;
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3) !important;
+}
+
+.btn-google:focus {
+  box-shadow: 0 0 0 0.2rem rgba(66, 133, 244, 0.25) !important;
+}
+
+.bg-dots {
+  background-color: #f0f0f0;
+  background-image: radial-gradient(circle, #e0e0e0 2px, transparent 2px);
+  background-size: 15px 15px;
+  background-position: 0 0, 7.5px 7.5px;
+}
