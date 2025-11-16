@@ -13,7 +13,6 @@ import { CreateNewsDto } from '../news/dto/create-news.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth/jwt-auth.guard';
 
 @Controller('favorites')
-@UseGuards(JwtAuthGuard)
 export class FavoriteController {
   constructor(private readonly favoriteService: FavoriteService) {}
 

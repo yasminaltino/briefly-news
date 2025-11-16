@@ -29,10 +29,4 @@ export class UserController {
   async findByGoogleId(@Param('googleId') googleId: string) {
     return this.userService.findByGoogleId(googleId);
   }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  getProfile(@Req() req) {
-    return this.userService.findById(req.user.id);
-  }
 }

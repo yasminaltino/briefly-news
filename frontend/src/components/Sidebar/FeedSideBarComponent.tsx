@@ -1,12 +1,14 @@
 interface SidebarProps {
   onShowFavorites: () => void;
   onShowAllNews: () => void;
+  onShowSummaries: () => void;
   currentView: "all" | "favorites" | "summaries";
 }
 
-const SidebarFeedComponent = ({
+const FeedSideBarComponent = ({
   onShowFavorites,
   onShowAllNews,
+  onShowSummaries,
   currentView,
 }: SidebarProps) => {
   return (
@@ -40,7 +42,7 @@ const SidebarFeedComponent = ({
               ? "btn-sidebar-active"
               : "btn-sidebar-inactive"
           }`}
-          onClick={() => console.log("Resumos clicado")}
+          onClick={onShowSummaries}
         >
           Resumos
         </button>
@@ -49,4 +51,4 @@ const SidebarFeedComponent = ({
   );
 };
 
-export default SidebarFeedComponent;
+export default FeedSideBarComponent;

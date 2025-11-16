@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
 import { User } from './modules/users/user.entity';
 import { News } from './modules/news/news.entity';
 import { Summary } from './modules/summaries/summary.entity';
@@ -11,12 +12,13 @@ import { UserModule } from './modules/users/user.module';
 import { NewsModule } from './modules/news/news.module';
 import { FavoriteModule } from './modules/favorites/favorite.module';
 import { SummaryModule } from './modules/summaries/summary.module';
+import { JwtAuthGuard } from './modules/auth/guards/jwt-auth/jwt-auth.guard';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '../.env',
+      envFilePath: '.env',
     }),
     PassportModule.register({ defaultStrategy: 'google' }),
     TypeOrmModule.forRoot({
@@ -34,6 +36,12 @@ import { SummaryModule } from './modules/summaries/summary.module';
     NewsModule,
     FavoriteModule,
     SummaryModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
   ],
 })
 export class AppModule {}

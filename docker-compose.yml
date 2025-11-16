@@ -5,6 +5,8 @@ services:
     image: mysql:8.0
     container_name: mysql_container
     restart: always
+    env_file:
+      - ./backend/.env
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_USER: ${DB_USER}
@@ -16,15 +18,15 @@ services:
       - mysqldata:/var/lib/mysql
 
   ollama:
-    image: ollama/ollama
+    image: ollama/ollama:latest
     container_name: ollama
-    restart: always
-    ports:
-      - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: unless-stopped
 
-  app:
+  backend_app:
     build: ./backend
     container_name: nest_app
     restart: always
@@ -34,7 +36,7 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - .env
+      - ./backend/.env
     environment:
       DB_HOST: db
       OLLAMA_URL: http://ollama:11434
@@ -42,6 +44,21 @@ services:
     volumes:
       - ./backend:/usr/src/app
     command: npm run start:dev
+
+  frontend_app:
+    build: ./frontend
+    container_name: vite_app
+    restart: always
+    depends_on:
+      - backend_app
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:3000
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev -- --host 0.0.0.0
 
 volumes:
   mysqldata:

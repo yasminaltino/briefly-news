@@ -6,6 +6,11 @@
   background-color: rgba(57, 252, 242, 0.2) !important;
 }
 
+.intellux-primary-summaries {
+  color: rgb(252, 216, 57) !important;
+  font-weight: 700 !important;
+}
+
 .btn-sidebar-inactive {
   background-color: white !important;
   border: 2px solid #14145f !important;
@@ -26,6 +31,18 @@
   border-radius: 25px !important;
 }
 
+.btn-intellux-summaries {
+  background-color: transparent !important;
+  border: 2px solid #14145f !important;
+  color: #14145f !important;
+}
+
+.btn-intellux-summaries:hover {
+  background-color: #14145f !important;
+  border-color: #14145f !important;
+  color: white !important;
+}
+
 .image-zoom-container {
   overflow: hidden;
   border-top-left-radius: 0.375rem;
@@ -38,4 +55,31 @@
 
 .image-zoom:hover {
   transform: scale(1.05);
+}
+
+.summary-content h5 {
+  color: #14145f !important;
+  border-color: #39fcf2 !important;
+}
+
+.summary-content h6 {
+  color: #333 !important;
+  margin-top: 1rem;
+}
+
+.summary-content strong {
+  color: #14145f;
+}
+
+.summary-content p {
+  text-align: justify;
+  margin-bottom: 1rem;
+}
+
+.modal-dialog-scrollable {
+  max-height: calc(100vh - 60px);
+}
+
+.modal-dialog-scrollable .modal-content {
+  max-height: 100%;
 }

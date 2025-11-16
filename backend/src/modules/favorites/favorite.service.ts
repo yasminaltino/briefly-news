@@ -68,16 +68,14 @@ export class FavoriteService {
       throw new NotFoundException('Favorito não encontrado');
     }
 
-    const newsId = favorite.news.id;
-
     await this.favoriteRepository.remove(favorite);
 
     const otherFavorites = await this.favoriteRepository.count({
-      where: { news: { id: newsId } },
+      where: { news: { url: newsUrl } },
     });
 
     if (otherFavorites === 0) {
-      await this.newsService.removeById(newsId);
+      await this.newsService.removeByUrl(newsUrl);
     }
   }
 }

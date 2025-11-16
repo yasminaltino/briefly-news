@@ -1,10 +1,16 @@
-import { Body, Controller, Post, Query, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Query,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { SummaryService } from './summary.service';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth/jwt-auth.guard';
 import { CreateSummaryDto } from './dto/create-summary.dto';
 
 @Controller('summaries')
-@UseGuards(JwtAuthGuard)
 export class SummaryController {
   constructor(private readonly summaryService: SummaryService) {}
 
@@ -13,7 +19,13 @@ export class SummaryController {
     const userId = req.user.id;
     return await this.summaryService.findOrCreate(
       userId,
-      createSummaryDto.newsId,
+      createSummaryDto.newsUrl,
     );
+  }
+
+  @Get()
+  async getUserSummaries(@Req() req) {
+    const userId = req.user.id;
+    return await this.summaryService.getUserSummaries(userId);
   }
 }

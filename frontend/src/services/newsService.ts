@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { News } from "../types/News";
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export const newsService = {
   getAllNews: async (): Promise<News[]> => {
@@ -13,6 +13,17 @@ export const newsService = {
       return [];
     }
   },
+
+  getTopNews: async (): Promise<News[]> => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/news/top-headlines`);
+      return response.data.articles;
+    } catch (error) {
+      console.error("Erro ao buscar notícias:", error);
+      return [];
+    }
+  },
+
   addToFavorites: async (newsData: News, token: string): Promise<boolean> => {
     try {
       const newsToSend = {
@@ -65,6 +76,41 @@ export const newsService = {
     } catch (error) {
       console.error("Erro ao remover favorito:", error);
       return false;
+    }
+  },
+
+  generateSummary: async (newsUrl: string, token: string): Promise<string> => {
+    try {
+      const payload = {
+        newsUrl: newsUrl.trim(),
+      };
+
+      const response = await axios.post(`${API_BASE_URL}/summaries`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      return response.data.content || "Resumo não disponível";
+    } catch (error) {
+      console.error("Erro ao gerar resumo:", error);
+      return "Erro ao gerar resumo";
+    }
+  },
+
+  getUserSummaries: async (token: string): Promise<any[]> => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/summaries`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error("Erro ao buscar resumos:", error);
+      return [];
     }
   },
 };

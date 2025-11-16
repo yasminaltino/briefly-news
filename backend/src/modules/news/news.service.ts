@@ -15,6 +15,20 @@ export class NewsService {
     private readonly newsRepository: Repository<News>,
   ) {}
 
+  async getAllNews() {
+    const response = await fetch(
+      `https://newsapi.org/v2/everything?q=technology&apiKey=${this.newsConfiguration.apiKey}`,
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `NewsAPI error: ${response.status} ${response.statusText}`,
+      );
+    }
+
+    return response.json();
+  }
+
   async getTopNews() {
     const response = await fetch(
       `https://newsapi.org/v2/top-headlines?country=us&apiKey=${this.newsConfiguration.apiKey}`,
@@ -43,9 +57,9 @@ export class NewsService {
     return this.newsRepository.save(news);
   }
 
-  async findById(newsId: number): Promise<News> {
+  async findByUrl(newsUrl: string): Promise<News> {
     const news = await this.newsRepository.findOne({
-      where: { id: newsId },
+      where: { url: newsUrl },
     });
 
     if (!news) {
@@ -55,10 +69,10 @@ export class NewsService {
     return news;
   }
 
-  async removeById(newsId: number): Promise<void> {
+  async removeByUrl(newsUrl: string): Promise<void> {
     const news = await this.newsRepository.findOne({
       where: {
-        id: newsId,
+        url: newsUrl,
       },
     });
 
