@@ -8,14 +8,13 @@ import { useAuth } from "../../hooks/useAuth";
 import { useNews } from "../../hooks/useNews";
 import { useFavorites } from "../../hooks/useFavorites";
 import { useSummary } from "../../hooks/useSummary";
+import { useUrlAuth } from "../../hooks/useUrlAuth";
 
 type ViewType = "all" | "favorites" | "summaries";
 
-const Feed = () => {
+const FeedPage = () => {
   const [currentView, setCurrentView] = useState<ViewType>("all");
-  const location = useLocation();
-
-  const { userToken, saveAuthData } = useAuth();
+  const { userToken } = useAuth();
   const { news, loading: newsLoading } = useNews();
   const {
     favoriteNews,
@@ -36,17 +35,7 @@ const Feed = () => {
     loadUserSummaries,
   } = useSummary();
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const token = urlParams.get("token");
-    const userStr = urlParams.get("user");
-
-    if (token) {
-      const userData = userStr ? JSON.parse(decodeURIComponent(userStr)) : null;
-      saveAuthData(token, userData);
-      window.history.replaceState({}, "", "/feed");
-    }
-  }, [location, saveAuthData]);
+  useUrlAuth();
 
   const handleShowFavorites = async () => {
     if (!userToken) {
@@ -150,4 +139,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default FeedPage;
