@@ -5,6 +5,7 @@ import { NewsService } from '../news/news.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { UserService } from '../users/user.service';
 import { ConfigService } from '@nestjs/config';
+import { CreateNewsDto } from '../news/dto/create-news.dto';
 
 @Injectable()
 export class SummaryService {
@@ -15,7 +16,10 @@ export class SummaryService {
     private readonly userService: UserService,
   ) {}
 
-  async findOrCreate(userId: number, newsUrl: string): Promise<Summary> {
+  async findOrCreate(
+    userId: number,
+    newsData: CreateNewsDto,
+  ): Promise<Summary> {
     const user = await this.userService.findById(userId);
     if (!user) {
       throw new NotFoundException('Usuário não encontrado');
@@ -24,13 +28,13 @@ export class SummaryService {
     const existingSummary = await this.summaryRepository.findOne({
       where: {
         user: { id: userId },
-        news: { url: newsUrl },
+        news: newsData,
       },
     });
 
     if (existingSummary) return existingSummary;
 
-    const news = await this.newsService.findByUrl(newsUrl);
+    const news = await this.newsService.findOrCreate(newsData);
     if (!news) {
       throw new NotFoundException('Notícia não encontrada');
     }
@@ -49,8 +53,6 @@ export class SummaryService {
 
   async generateSummary(text: string): Promise<string> {
     const ollamaUrl = process.env.OLLAMA_URL;
-    console.log('Texto para resumir:', text.substring(0, 200) + '...');
-
     try {
       const prompt = `
         Resuma a notícia a seguir de forma ANALÍTICA, detalhada e em português:

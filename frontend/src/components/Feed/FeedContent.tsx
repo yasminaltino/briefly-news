@@ -1,14 +1,14 @@
 import NewsCardComponent from "../Cards/NewsCardComponent";
 import type { News } from "../../types/News";
-import type { SummaryItem } from "../../types/SummaryItem";
+import type { Summary } from "../../types/Summary";
 import SummaryCardComponent from "../Cards/SummaryCardComponent";
 
 interface FeedContentProps {
   newsToShow: News[];
-  summaries?: SummaryItem[];
+  summaries?: Summary[];
   currentView: "all" | "favorites" | "summaries";
   onFavorite: (newsItem: News) => void;
-  onSummary: (newsUrl: string) => void;
+  onSummary: (news: News) => void;
   isFavorited: (url: string) => boolean;
 }
 
@@ -61,7 +61,11 @@ const FeedContent = ({
         summaries.length > 0 ? (
           <div className="row g-3">
             {summaries.map((summary) => (
-              <SummaryCardComponent summary={summary} onSummary={onSummary} />
+              <SummaryCardComponent
+                key={summary.id}
+                summary={summary}
+                onSummary={onSummary}
+              />
             ))}
           </div>
         ) : (

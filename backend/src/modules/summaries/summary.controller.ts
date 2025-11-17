@@ -8,19 +8,16 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { SummaryService } from './summary.service';
-import { CreateSummaryDto } from './dto/create-summary.dto';
+import { CreateNewsDto } from '../news/dto/create-news.dto';
 
 @Controller('summaries')
 export class SummaryController {
   constructor(private readonly summaryService: SummaryService) {}
 
   @Post()
-  async findOrCreate(@Req() req, @Body() createSummaryDto: CreateSummaryDto) {
+  async findOrCreate(@Req() req, @Body() createSummaryDto: CreateNewsDto) {
     const userId = req.user.id;
-    return await this.summaryService.findOrCreate(
-      userId,
-      createSummaryDto.newsUrl,
-    );
+    return await this.summaryService.findOrCreate(userId, createSummaryDto);
   }
 
   @Get()

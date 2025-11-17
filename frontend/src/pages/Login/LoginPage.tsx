@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import intelluxLogo from "../../assets/intellux-logo.webp";
 
 const Login = () => {
   const location = useLocation();
@@ -25,7 +26,11 @@ const Login = () => {
       >
         <div className="card-body p-4 d-flex flex-column justify-content-center">
           <div className="text-center mb-4">
-            <h2 className="intellux-primary">intellux News</h2>
+            <img
+              src={intelluxLogo}
+              alt="Intellux Logo"
+              style={{ height: "45px", marginRight: "10px" }}
+            />
             <p className="text-muted">Entre com sua conta Google</p>
           </div>
 

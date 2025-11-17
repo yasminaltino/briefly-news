@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { newsService } from "../services/newsService";
 import { useAuth } from "./useAuth";
+import type { News } from "../types/News";
 
 export const useSummary = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,8 +17,8 @@ export const useSummary = () => {
 
   const { userToken } = useAuth();
 
-  const openModal = async (newsTitle: string, newsUrl: string) => {
-    setCurrentNews({ title: newsTitle, url: newsUrl });
+  const openModal = async (news: News) => {
+    setCurrentNews({ title: news.title, url: news.url });
     setIsModalOpen(true);
     setLoading(true);
     setSummary("");
@@ -25,7 +26,7 @@ export const useSummary = () => {
     try {
       if (userToken) {
         const generatedSummary = await newsService.generateSummary(
-          newsUrl,
+          news,
           userToken
         );
         setSummary(generatedSummary);

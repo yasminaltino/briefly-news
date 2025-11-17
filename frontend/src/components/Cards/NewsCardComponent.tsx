@@ -3,7 +3,7 @@ import type { News } from "../../types/News";
 interface NewsCardProps {
   news: News;
   onFavorite: (news: News) => void;
-  onSummary: (newsId: string) => void;
+  onSummary: (news: News) => void;
   isFavorited?: boolean;
 }
 
@@ -72,7 +72,7 @@ const NewsCardComponent = ({
             <button
               type="button"
               className="btn btn-outline-primary btn-sm"
-              onClick={() => onSummary(news.url)}
+              onClick={() => onSummary(news)}
               style={{ fontSize: "0.75rem" }}
             >
               ◊ Resumo

@@ -18,7 +18,7 @@ services:
       - mysqldata:/var/lib/mysql
 
   ollama:
-    image: ollama/ollama:latest
+    build: ./backend/ollama
     container_name: ollama
     volumes:
       - ollama_data:/root/.ollama

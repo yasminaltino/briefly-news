@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import FeedHeaderComponent from "../../components/Header/FeedHeaderComponent";
 import FeedSideBarComponent from "../../components/Sidebar/FeedSideBarComponent";
 import FeedContent from "../../components/Feed/FeedContent";
@@ -9,6 +8,7 @@ import { useNews } from "../../hooks/useNews";
 import { useFavorites } from "../../hooks/useFavorites";
 import { useSummary } from "../../hooks/useSummary";
 import { useUrlAuth } from "../../hooks/useUrlAuth";
+import type { News } from "../../types/News";
 
 type ViewType = "all" | "favorites" | "summaries";
 
@@ -67,17 +67,12 @@ const FeedPage = () => {
     await toggleFavorite(newsItem);
   };
 
-  const handleSummary = async (newsUrl: string) => {
+  const handleSummary = async (news: News) => {
     if (!userToken) {
       alert("Você precisa estar logado para gerar resumos");
       return;
     }
-
-    const allNews = [...news, ...favoriteNews];
-    const newsItem = allNews.find((item) => item.url === newsUrl);
-    const newsTitle = newsItem?.title || "Notícia";
-
-    await openModal(newsTitle, newsUrl);
+    await openModal(news);
   };
 
   const isLoading = newsLoading || favoritesLoading;
@@ -117,6 +112,7 @@ const FeedPage = () => {
               currentView={currentView}
             />
           </div>
+
           <FeedContent
             newsToShow={newsToShow}
             summaries={userSummaries}

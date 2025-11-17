@@ -26,7 +26,6 @@ export class AuthController {
   async googleCallback(@Req() req, @Res() res) {
     try {
       const response = await this.authService.login(req.user.id);
-      console.log(response.access_token);
       res.redirect(
         `http://localhost:5173/feed?token=${response.access_token}&user=${encodeURIComponent(JSON.stringify(response.user))}`,
       );
@@ -36,9 +35,4 @@ export class AuthController {
       );
     }
   }
-
-  // @Post('logout')
-  // async logout(@Req() req: any) {
-  //   return this.authService.logout(req.user?.id);
-  // }
 }

@@ -1,8 +1,9 @@
-import type { SummaryItem } from "../../types/SummaryItem";
+import type { News } from "../../types/News";
+import type { Summary } from "../../types/Summary";
 
 interface SummaryCardProps {
-  summary: SummaryItem;
-  onSummary: (newsUrl: string) => void;
+  summary: Summary;
+  onSummary: (news: News) => void;
 }
 
 const SummaryCardComponent = ({ summary, onSummary }: SummaryCardProps) => {
@@ -21,7 +22,7 @@ const SummaryCardComponent = ({ summary, onSummary }: SummaryCardProps) => {
   };
 
   return (
-    <div key={summary.id} className="col-12">
+    <div className="col-12">
       <div className="card h-100 shadow-sm" style={{ cursor: "pointer" }}>
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-start mb-3">
@@ -74,7 +75,7 @@ const SummaryCardComponent = ({ summary, onSummary }: SummaryCardProps) => {
                 className="btn btn-outline-info btn-sm"
                 onClick={(e) => {
                   e.stopPropagation();
-                  onSummary(summary.news.url);
+                  onSummary(summary.news);
                 }}
               >
                 Ver completo

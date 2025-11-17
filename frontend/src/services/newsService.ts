@@ -79,16 +79,11 @@ export const newsService = {
     }
   },
 
-  generateSummary: async (newsUrl: string, token: string): Promise<string> => {
+  generateSummary: async (newsData: News, token: string): Promise<string> => {
     try {
-      const payload = {
-        newsUrl: newsUrl.trim(),
-      };
-
-      const response = await axios.post(`${API_BASE_URL}/summaries`, payload, {
+      const response = await axios.post(`${API_BASE_URL}/summaries`, newsData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
         },
       });
 

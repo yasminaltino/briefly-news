@@ -6,7 +6,7 @@ export const useAuth = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const userData = localStorage.getItem("user");
+    const userData = localStorage.getItem("userData");
 
     setUserToken(token);
     if (userData) {
@@ -25,7 +25,7 @@ export const useAuth = () => {
 
   const logout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.removeItem("userData");
     setUserToken(null);
     setUser(null);
   };
