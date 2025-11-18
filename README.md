@@ -49,9 +49,6 @@ NEWS_API_KEY=SUA_API_KEY
 OLLAMA_URL=http://ollama:11434
 ```
 
-Configure no Google Console a redirect URI:  
-`http://localhost:3000/auth/google/callback`
-
 ### 3.2 Como obter as chaves do .env (passo a passo)
 
 - Google OAuth (GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET)
