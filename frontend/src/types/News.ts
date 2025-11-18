@@ -1,13 +1,16 @@
+export interface NewsSource {
+  id: string | null;
+  name: string;
+}
+
 export interface News {
-  content: string;
+  id?: number;
   title: string;
-  description: string;
-  author: string;
+  description?: string;
+  content?: string;
+  url: string;
   urlToImage?: string;
   publishedAt: string;
-  url: string;
-  source: {
-    id: string | null;
-    name: string;
-  } | null;
+  author?: string;
+  source: NewsSource | string | null; // ✅ Aceitar objeto, string ou null
 }

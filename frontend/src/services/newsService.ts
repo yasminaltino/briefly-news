@@ -26,10 +26,18 @@ export const newsService = {
 
   addToFavorites: async (newsData: News, token: string): Promise<boolean> => {
     try {
+      let sourceValue: string | null = null;
+      if (typeof newsData.source === "string") {
+        sourceValue = newsData.source;
+      } else if (newsData.source && typeof newsData.source === "object") {
+        sourceValue = newsData.source.name;
+      }
+
       const newsToSend = {
         ...newsData,
-        source: newsData.source?.name || null,
+        source: sourceValue,
       };
+
       const response = await axios.post(
         `${API_BASE_URL}/favorites`,
         newsToSend,
@@ -80,12 +88,24 @@ export const newsService = {
   },
 
   generateSummary: async (newsData: News, token: string): Promise<string> => {
+    let newsToSend = newsData;
+    if (typeof newsData.source === "object" && newsData.source !== null) {
+      newsToSend = {
+        ...newsData,
+        source: newsData.source?.name || "Desconhecido",
+      };
+    }
+
     try {
-      const response = await axios.post(`${API_BASE_URL}/summaries`, newsData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.post(
+        `${API_BASE_URL}/summaries`,
+        newsToSend,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       return response.data.content || "Resumo não disponível";
     } catch (error) {
