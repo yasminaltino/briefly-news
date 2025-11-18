@@ -75,7 +75,7 @@ OLLAMA_URL=http://ollama:11434
 
 - NEWS_API_KEY
 
-  1. Crie uma conta em https://newsapi.org/ (ou no provedor que você estiver usando).
+  1. Crie uma conta em https://newsapi.org/.
   2. Gere a chave no painel (“API Key”).
   3. Copie para `NEWS_API_KEY`.
 
