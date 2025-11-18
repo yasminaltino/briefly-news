@@ -34,7 +34,7 @@ Pré‑requisitos: Docker Compose, credenciais Google OAuth (Client ID/Secret).
 DB_HOST=db
 DB_PORT=3306
 DB_USER=intellux
-DB_PASSWORD=intellux
+DB_ROOT_PASSWORD=intellux
 DB_NAME=intellux
 
 JWT_SECRET=super-secret
