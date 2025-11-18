@@ -113,7 +113,7 @@ Acessos:
 - Serviço de IA isolado no container do Ollama, com modelo baixado no start.
 - DTOs e ValidationPipe garantindo entrada consistente no backend.
 - Hooks especializados para separar lógica de autenticação, notícias e resumos.
-- Backend estruturado em módulos (auth, news, favorites, summaries) para facilitar manutenção
+- Backend estruturado em módulos (auth, news, favorites, summaries, users) para facilitar manutenção
 
 ## 5. Estrutura resumida
 
