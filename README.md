@@ -49,9 +49,6 @@ NEWS_API_KEY=SUA_API_KEY
 OLLAMA_URL=http://ollama:11434
 ```
 
-Configure no Google Console a redirect URI:  
-`http://localhost:3000/auth/google/callback`
-
 ### 3.2 Como obter as chaves do .env (passo a passo)
 
 - Google OAuth (GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET)
@@ -78,7 +75,7 @@ Configure no Google Console a redirect URI:
 
 - NEWS_API_KEY
 
-  1. Crie uma conta em https://newsapi.org/ (ou no provedor que você estiver usando).
+  1. Crie uma conta em https://newsapi.org/.
   2. Gere a chave no painel (“API Key”).
   3. Copie para `NEWS_API_KEY`.
 
@@ -113,7 +110,7 @@ Acessos:
 - Serviço de IA isolado no container do Ollama, com modelo baixado no start.
 - DTOs e ValidationPipe garantindo entrada consistente no backend.
 - Hooks especializados para separar lógica de autenticação, notícias e resumos.
-- Backend estruturado em módulos (auth, news, favorites, summaries) para facilitar manutenção
+- Backend estruturado em módulos (auth, news, favorites, summaries, users) para facilitar manutenção
 
 ## 5. Estrutura resumida
 
