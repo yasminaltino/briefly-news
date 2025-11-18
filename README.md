@@ -28,7 +28,7 @@ Infra: Docker, Docker Compose, Ollama (Gemma 2:2b).
 
 Pré‑requisitos: Docker Compose, credenciais Google OAuth (Client ID/Secret).
 
-### 3.1 Variáveis de ambiente backend (`backend/.env`)
+### 3.1 Variáveis de ambiente backend (`.env`)
 
 ```
 DB_HOST=db
@@ -38,9 +38,10 @@ DB_PASSWORD=intellux
 DB_NAME=intellux
 
 JWT_SECRET=super-secret
+JWT_EXPIRE_IN=24h
 
 GOOGLE_CLIENT_ID=SEU_CLIENT_ID
-GOOGLE_CLIENT_SECRET=SEU_CLIENT_SECRET
+GOOGLE_SECRET=SEU_CLIENT_SECRET
 GOOGLE_CALLBACK_URL=http://localhost:3000/auth/google/callback
 
 NEWS_API_KEY=SUA_API_KEY

@@ -6,10 +6,10 @@ services:
     container_name: mysql_container
     restart: always
     env_file:
-      - ./backend/.env
+      - .env
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_USER: ${DB_USER}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
     ports:
@@ -36,7 +36,7 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - ./backend/.env
+      - .env
     environment:
       DB_HOST: db
       OLLAMA_URL: http://ollama:11434

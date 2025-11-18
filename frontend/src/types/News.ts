@@ -12,5 +12,5 @@ export interface News {
   urlToImage?: string;
   publishedAt: string;
   author?: string;
-  source: NewsSource | string | null; // ✅ Aceitar objeto, string ou null
+  source: NewsSource | string | null;
 }
