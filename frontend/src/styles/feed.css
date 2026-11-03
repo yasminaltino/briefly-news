@@ -1,12 +1,12 @@
-.bg-intellux-sidebar {
+.bg-briefly-sidebar {
   background-color: rgba(57, 252, 242, 0.2) !important;
 }
 
-.bg-intellux-feed {
+.bg-briefly-feed {
   background-color: rgba(57, 252, 242, 0.2) !important;
 }
 
-.intellux-primary-summaries {
+.briefly-primary-summaries {
   color: rgb(252, 216, 57) !important;
   font-weight: 700 !important;
 }
@@ -31,13 +31,13 @@
   border-radius: 25px !important;
 }
 
-.btn-intellux-summaries {
+.btn-briefly-summaries {
   background-color: transparent !important;
   border: 2px solid #14145f !important;
   color: #14145f !important;
 }
 
-.btn-intellux-summaries:hover {
+.btn-briefly-summaries:hover {
   background-color: #14145f !important;
   border-color: #14145f !important;
   color: white !important;

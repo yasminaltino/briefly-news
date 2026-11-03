@@ -1,5 +1,5 @@
 import { useAuth } from "../../hooks/useAuth";
-import intelluxLogo from "../../assets/intellux-logo.webp";
+import brieflyLogo from "../../assets/briefly-logo.svg";
 
 const FeedHeaderComponent = () => {
   const { logout, user } = useAuth();
@@ -14,21 +14,21 @@ const FeedHeaderComponent = () => {
   };
 
   return (
-    <div className="bg-intellux-feed pt-2 pt-md-3">
+    <div className="bg-briefly-feed pt-2 pt-md-3">
       <div className="container">
-        <nav className="navbar card-intellux-bg px-3 px-md-4 py-2 rounded-pill">
+        <nav className="navbar card-briefly-bg px-3 px-md-4 py-2 rounded-pill">
           <div className="container-fluid p-0">
             <div className="d-flex align-items-center flex-wrap gap-2">
               <div className="d-flex align-items-center">
                 <img
-                  src={intelluxLogo}
-                  alt="Intellux Logo"
+                  src={brieflyLogo}
+                  alt="Briefly News"
                   style={{ height: "28px" }}
                   className="d-none d-sm-block me-2"
                 />
               </div>
-              <a className="navbar-brand intellux-primary fw-bold fs-5 mb-0 d-md-none">
-                intellux
+              <a className="navbar-brand briefly-primary fw-bold fs-5 mb-0 d-md-none">
+                Briefly News
               </a>
 
               {user && (
@@ -39,7 +39,7 @@ const FeedHeaderComponent = () => {
             </div>
 
             <button
-              className="btn btn-intellux btn-sm"
+              className="btn btn-briefly btn-sm"
               type="button"
               onClick={handleLogout}
             >

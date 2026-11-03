@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import intelluxLogo from "../../assets/intellux-logo.webp";
+import brieflyLogo from "../../assets/briefly-logo.svg";
 
 const Login = () => {
   const location = useLocation();
@@ -21,16 +21,19 @@ const Login = () => {
   return (
     <div className="container-fluid vh-100 d-flex align-items-center justify-content-center bg-dots">
       <div
-        className="card shadow card-intellux-bg"
+        className="card shadow card-briefly-bg"
         style={{ maxWidth: "550px", width: "100%", minHeight: "350px" }}
       >
         <div className="card-body p-4 d-flex flex-column justify-content-center">
           <div className="text-center mb-4">
             <img
-              src={intelluxLogo}
-              alt="Intellux Logo"
+              src={brieflyLogo}
+              alt="Briefly News"
               style={{ height: "45px", marginRight: "10px" }}
             />
+            <p className="text-muted mt-3 mb-1">
+              Acompanhe notícias. Salve favoritos. Leia resumos com IA.
+            </p>
             <p className="text-muted">Entre com sua conta Google</p>
           </div>
 

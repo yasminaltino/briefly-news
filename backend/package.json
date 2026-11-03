@@ -1,7 +1,7 @@
 {
-  "name": "teste-intellux",
+  "name": "briefly-news-backend",
   "version": "0.0.1",
-  "description": "",
+  "description": "API do Briefly News com autenticação Google, favoritos e resumos com IA local.",
   "author": "",
   "private": true,
   "license": "UNLICENSED",

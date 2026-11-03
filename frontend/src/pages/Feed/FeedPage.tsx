@@ -83,7 +83,7 @@ const FeedPage = () => {
       <>
         <FeedHeaderComponent />
         <div
-          className="bg-intellux-feed"
+          className="bg-briefly-feed"
           style={{ minHeight: "calc(100vh - 56px)" }}
         >
           <div className="container-fluid d-flex justify-content-center align-items-center h-100">
@@ -100,7 +100,7 @@ const FeedPage = () => {
     <>
       <FeedHeaderComponent />
       <div
-        className="bg-intellux-feed"
+        className="bg-briefly-feed"
         style={{ minHeight: "calc(100vh - 56px)" }}
       >
         <div className="row h-100">

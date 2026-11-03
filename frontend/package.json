@@ -1,5 +1,6 @@
 {
-  "name": "frontend",
+  "name": "briefly-news-frontend",
+  "description": "Interface do Briefly News para leitura de notícias, favoritos e resumos com IA.",
   "private": true,
   "version": "0.0.0",
   "type": "module",

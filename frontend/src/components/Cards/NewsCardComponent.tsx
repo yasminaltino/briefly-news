@@ -64,7 +64,9 @@ const NewsCardComponent = ({
         </p>
 
         {news.source && (
-          <small className="text-muted mb-2 d-block">{news.source.name}</small>
+          <small className="text-muted mb-2 d-block">
+            {typeof news.source === "string" ? news.source : news.source.name}
+          </small>
         )}
 
         <div className="d-flex justify-content-between align-items-center mt-auto">

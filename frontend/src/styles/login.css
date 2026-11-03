@@ -1,25 +1,25 @@
-.intellux-primary {
+.briefly-primary {
   color: #14145f !important;
   font-size: 40px;
   font-weight: 700;
 }
 
-.bg-intellux-primary {
+.bg-briefly-primary {
   background-color: #14145f !important;
 }
 
-.card-intellux-bg {
+.card-briefly-bg {
   background-color: rgba(216, 252, 57, 0.8) !important;
 }
 
-.btn-intellux {
+.btn-briefly {
   background-color: transparent !important;
   border: 2px solid #14145f !important;
   color: #14145f !important;
   border-radius: 50px !important;
 }
 
-.btn-intellux:hover {
+.btn-briefly:hover {
   background-color: #14145f !important;
   border-color: #14145f !important;
   color: white !important;

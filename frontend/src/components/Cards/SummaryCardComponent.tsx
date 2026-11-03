@@ -13,7 +13,7 @@ const SummaryCardComponent = ({ summary, onSummary }: SummaryCardProps) => {
     return truncated
       .replace(
         /^## (.*$)/gm,
-        '<strong class="intellux-primary-summaries fs-6">$1</strong><br/>'
+        '<strong class="briefly-primary-summaries fs-6">$1</strong><br/>'
       )
       .replace(/\*\*(.*?):\*\*/g, '<strong class="text-dark">$1:</strong>')
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
@@ -28,7 +28,7 @@ const SummaryCardComponent = ({ summary, onSummary }: SummaryCardProps) => {
           <div className="d-flex justify-content-between align-items-start mb-3">
             <div className="flex-grow-1">
               <h6
-                className="card-title intellux-primary mb-1"
+                className="card-title briefly-primary mb-1"
                 style={{ fontSize: 20 }}
               >
                 📰 {summary.news.title}
@@ -61,7 +61,7 @@ const SummaryCardComponent = ({ summary, onSummary }: SummaryCardProps) => {
 
           <div className="d-flex justify-content-between align-items-center">
             <button
-              className="btn btn-intellux-summaries btn-sm"
+              className="btn btn-briefly-summaries btn-sm"
               onClick={(e) => {
                 e.stopPropagation();
                 window.open(summary.news.url, "_blank");

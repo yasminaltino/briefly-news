@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="64" viewBox="0 0 320 64">
+  <rect width="64" height="64" rx="16" fill="#14145f"/>
+  <path d="M18 14h19a10 10 0 0 1 7 17 11 11 0 0 1-7 19H18z" fill="#d8fc39"/>
+  <path d="M26 23h10M26 32h13M26 41h10" stroke="#14145f" stroke-width="4" stroke-linecap="round"/>
+  <text x="78" y="31" fill="#14145f" font-family="Arial, sans-serif" font-size="30" font-weight="700">Briefly News</text>
+  <text x="79" y="51" fill="#14145f" font-family="Arial, sans-serif" font-size="13" letter-spacing="2">NOTICIAS EM RESUMO</text>
+</svg>

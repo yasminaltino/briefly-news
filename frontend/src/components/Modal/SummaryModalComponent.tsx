@@ -42,7 +42,7 @@ const SummaryModalComponent = ({
           <div className="modal-header bg-light">
             <div>
               <h5
-                className="modal-title intellux-primary mb-1"
+                className="modal-title briefly-primary mb-1"
                 style={{ fontSize: 20 }}
               >
                 Resumo Inteligente
